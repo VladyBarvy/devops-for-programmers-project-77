@@ -1,0 +1,26 @@
+---
+load_balancer:
+  external_port: 8080
+
+datadog_api_key: "{{Obfuscation.datadog_api_key}}"
+datadog_site: "datadoghq.eu"
+datadog_checks:
+  process:
+    init_config:
+    instances:
+      - name: ssh
+        search_string: ['ssh', 'sshd']
+      - name: syslog
+        search_string: ['rsyslog']
+        cpu_check_interval: 0.2
+        exact_match: true
+        ignore_denied_access: true
+
+  http_check:
+    init_config:
+    instances:
+      - name: My Web Service
+        url: 
+        timeout: 5
+        method: GET
+        expected_status_code: 200

@@ -1,0 +1,36 @@
+---
+- hosts: webservers
+  become: yes
+  roles:
+    - geerlingguy.docker
+    - docker_install
+
+- hosts: webservers
+  become: yes
+  tasks:
+    - name: Pull Wiki.js image
+      docker_image:
+        name: lscr.io/linuxserver/wikijs:v2.5.306-ls175
+        state: present
+        source: pull
+      tags:
+        - pull_image
+
+    - name: Run Wiki.js container
+      docker_container:
+        name: wikijs
+        image: lscr.io/linuxserver/wikijs:v2.5.306-ls175
+        state: started
+        ports:
+          - "{{ load_balancer.external_port }}:3000"
+      tags:
+        - run_container
+
+- name: Configure datadog on webservers
+  hosts: webservers
+  become: true
+  roles:
+    - role: datadog.datadog
+  tags:
+    - configure_datadog
+    
