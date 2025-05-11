@@ -99,5 +99,5 @@ sudo docker run -d -p 0.0.0.0:80:3000 \
   ghcr.io/requarks/wiki:2.5
 EOT
     ]
-  }
+}
 
