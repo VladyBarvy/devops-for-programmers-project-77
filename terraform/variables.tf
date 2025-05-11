@@ -71,3 +71,9 @@ variable "user_data" {
     "foo"        = "bar"
   }
 }
+
+variable "yc_postgresql_version" {
+  description = "PostgreSQL version for Yandex Managed Database"
+  type        = string
+  default     = "15"  # Укажите версию по умолчанию, если требуется
+}
