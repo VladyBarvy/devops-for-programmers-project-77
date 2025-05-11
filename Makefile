@@ -1,10 +1,13 @@
-.PHONY: encrypt_vault decrypt_vault edit_vault view_vault install-roles deploy-droplets pull-image run-container configure_datadog full-playbook
+.PHONY: edit_vault view_vault install-roles deploy-droplets pull-image run-container configure_datadog full-playbook
 
-encrypt_vault:
-	@ANSIBLE_CONFIG=./ansible/ansible.cfg ansible-vault encrypt  ansible/group_vars/webservers/vault.yml
+init_infra:
+	terraform init
 
-decrypt_vault:
-	@ANSIBLE_CONFIG=./ansible/ansible.cfg ansible-vault decrypt  ansible/group_vars/webservers/vault.yml
+apply:
+	terraform apply 
+
+destroy:
+	terraform destroy 
 
 edit_vault:
 	@ANSIBLE_CONFIG=./ansible/ansible.cfg ansible-vault edit ansible/group_vars/webservers/vault.yml
@@ -29,6 +32,3 @@ configure_datadog:
 
 full-playbook:
 	@ANSIBLE_CONFIG=./ansible/ansible.cfg ansible-playbook -i ansible/inventory.ini -l webservers  ansible/playbook.yml 
-
-apply:
-	@make -C terraform apply
