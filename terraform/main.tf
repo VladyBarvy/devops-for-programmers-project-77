@@ -79,12 +79,7 @@ resource "yandex_compute_instance" "vm" {
   }
 }
 
-connection {
-    type        = "ssh"
-    user        = "ubuntu"
-    private_key = file("~/.ssh/id_rsa")
-    host        = self.network_interface[0].nat_ip_address
-}
+
 
 provisioner "remote-exec" {
   inline = [
@@ -98,6 +93,13 @@ sudo docker run -d -p 0.0.0.0:80:3000 \
   -e DB_PASS=${var.db_password} \
   ghcr.io/requarks/wiki:2.5
 EOT
-    ]
+  ]
+
+  connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = file("~/.ssh/id_rsa")
+    host        = self.network_interface[0].nat_ip_address
+  }
 }
 
