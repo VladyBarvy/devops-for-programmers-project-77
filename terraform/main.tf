@@ -54,6 +54,21 @@ resource "yandex_mdb_postgresql_database" "db" {
   depends_on = [yandex_mdb_postgresql_cluster.dbcluster]
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 resource "yandex_compute_instance" "vm" {
   name        = "tfhexlet"
   zone        = "ru-central1-a"
@@ -77,7 +92,7 @@ resource "yandex_compute_instance" "vm" {
   metadata = {
     ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
   }
-}
+
 
 
 
@@ -102,4 +117,15 @@ EOT
     host        = self.network_interface[0].nat_ip_address
   }
 }
+
+
+
+
+
+
+}
+
+
+
+
 
