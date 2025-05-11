@@ -84,9 +84,9 @@ connection {
     user        = "ubuntu"
     private_key = file("~/.ssh/id_rsa")
     host        = self.network_interface[0].nat_ip_address
-  }
+}
 
-  provisioner "remote-exec" {
+provisioner "remote-exec" {
   inline = [
 <<EOT
 sudo docker run -d -p 0.0.0.0:80:3000 \
@@ -100,4 +100,4 @@ sudo docker run -d -p 0.0.0.0:80:3000 \
 EOT
     ]
   }
-}
+
