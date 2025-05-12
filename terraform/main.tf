@@ -104,16 +104,16 @@ resource "yandex_compute_instance" "vm" {
 
 provisioner "remote-exec" {
   inline = [
-<<EOT
-sudo docker run -d -p 0.0.0.0:80:3000 \
-  -e DB_TYPE=postgres \
-  -e DB_NAME=${var.db_name} \
-  -e DB_HOST=${yandex_mdb_postgresql_cluster.dbcluster.host.0.fqdn} \
-  -e DB_PORT=6432 \
-  -e DB_USER=${var.db_username} \
-  -e DB_PASS=${var.db_password} \
-  ghcr.io/requarks/wiki:2.5
-EOT
+    <<EOT
+      sudo docker run -d -p 0.0.0.0:80:3000 \
+        -e DB_TYPE=postgres \
+        -e DB_NAME=${var.db_name} \
+        -e DB_HOST=${yandex_mdb_postgresql_cluster.dbcluster.host.0.fqdn} \
+        -e DB_PORT=6432 \
+        -e DB_USER=${var.db_username} \
+        -e DB_PASS=${var.db_password} \
+        ghcr.io/requarks/wiki:2.5
+    EOT
   ]
 }
 
