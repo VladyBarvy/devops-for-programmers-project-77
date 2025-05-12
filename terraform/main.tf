@@ -22,7 +22,7 @@ resource "yandex_mdb_postgresql_cluster" "dbcluster" {
       disk_size          = 15
     }
     postgresql_config = {
-      max_connections    = 100
+      max_connections = 100
     }
   }
 
@@ -40,7 +40,7 @@ resource "yandex_mdb_postgresql_cluster" "dbcluster" {
 
 
 data "yandex_compute_image" "img" {
-  family = "ubuntu-2204-lts" # Укажите нужное семейство образов
+  family    = "ubuntu-2204-lts"
   folder_id = "standard-images"
 }
 
@@ -76,8 +76,8 @@ resource "yandex_mdb_postgresql_database" "db" {
 
 
 resource "yandex_compute_instance" "vm" {
-  name        = "tfhexlet"
-  zone        = "ru-central1-a"
+  name = "tfhexlet"
+  zone = "ru-central1-a"
 
   resources {
     cores  = 2
