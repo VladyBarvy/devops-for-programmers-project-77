@@ -4,4 +4,5 @@ terraform/*.tfstate
 terraform/*.tfstate.*
 terraform/secret.*
 terraform/.terraform
-terraform/ssh
+terraform/id_rsa
+terraform/id_rsa.pub
