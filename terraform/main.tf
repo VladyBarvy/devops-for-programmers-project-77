@@ -96,7 +96,7 @@ resource "yandex_compute_instance" "vm" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("terraform/ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file("~/.ssh/id_77.pub")}"
   }
 
 
@@ -120,7 +120,7 @@ EOT
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("terraform/ssh/id_rsa")
+    private_key = file("~/.ssh/id_77")
     host        = self.network_interface.0.nat_ip_address
   }
 
