@@ -38,9 +38,15 @@ resource "yandex_mdb_postgresql_cluster" "dbcluster" {
   }
 }
 
+
+data "yandex_compute_image" "img" {
+  family = "ubuntu-2204-lts" # Укажите нужное семейство образов
+  folder_id = "standard-images"
+}
+
 resource "yandex_mdb_postgresql_user" "dbuser" {
   cluster_id = yandex_mdb_postgresql_cluster.dbcluster.id
-  name       = var.db_user
+  name       = var.db_username
   password   = var.db_password
   depends_on = [yandex_mdb_postgresql_cluster.dbcluster]
 }
@@ -104,21 +110,19 @@ sudo docker run -d -p 0.0.0.0:80:3000 \
   -e DB_NAME=${var.db_name} \
   -e DB_HOST=${yandex_mdb_postgresql_cluster.dbcluster.host.0.fqdn} \
   -e DB_PORT=6432 \
-  -e DB_USER=${var.db_user} \
+  -e DB_USER=${var.db_username} \
   -e DB_PASS=${var.db_password} \
   ghcr.io/requarks/wiki:2.5
 EOT
   ]
+}
 
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("~/.ssh/id_rsa")
-    host        = self.network_interface[0].nat_ip_address
+    private_key = file("${path.module}/ssh/id_rsa")
+    host        = self.network_interface.0.nat_ip_address
   }
-}
-
-
 
 
 

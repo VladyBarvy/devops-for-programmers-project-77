@@ -35,6 +35,12 @@ variable "db_username" {
   sensitive   = true
 }
 
+variable "db_name" {
+  description = "PostgreSQL database name"
+  type        = string
+  default     = "your_dbname"
+}
+
 variable "access_key" {
   type      = string
   sensitive = true
@@ -75,5 +81,5 @@ variable "user_data" {
 variable "yc_postgresql_version" {
   description = "PostgreSQL version for Yandex Managed Database"
   type        = string
-  default     = "15"  # Укажите версию по умолчанию, если требуется
+  default     = "15"  
 }
