@@ -120,7 +120,7 @@ EOT
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("id_rsa")
+    private_key = var.private_key_inkognito
     host        = self.network_interface.0.nat_ip_address
   }
 

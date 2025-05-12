@@ -16,6 +16,12 @@ variable "yc_folder_id" {
   sensitive   = true
 }
 
+variable "private_key_inkognito" {
+  description = "Private key content"
+  type        = string
+  sensitive   = true
+}
+
 # SSH public key
 variable "ssh_public_key" {
   description = "SSH public key for VM instances"
