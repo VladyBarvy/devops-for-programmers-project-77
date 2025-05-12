@@ -33,4 +33,3 @@
     - role: datadog.datadog
   tags:
     - configure_datadog
-    
