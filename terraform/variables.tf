@@ -16,6 +16,13 @@ variable "yc_folder_id" {
   sensitive   = true
 }
 
+# SSH public key
+variable "ssh_public_key" {
+  description = "SSH public key for VM instances"
+  type        = string
+  default     = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC6/E+jxsM/P6Msvy0D5yn0S5MwJKHpSvCW5fkQTMwbSf7/6bpQjpYyVuVUB/DPXfnVS3xKaN57/goEjJvN/oGX9whBM7p3/7GbNfBxrgXhqjH4hSDumqBLCL1+Uj+wuDhY1Ty5cESs2mlxMPKFOi9cx0T//0zhOoTx4HAW8KY7jS5B3Jg8T98Y1njXWGLMfwCUCcVSJeHm5C3nUXxFoOi/BK9kNGavTdR8kDiHkElQ18Ic9G+atV69AOHglzJXFrLCVItZRFH/TQgHX5S4+jX0cNf7ypw8u4PYpqjD0UfYxgX8/ew/qL/Y2HxYln86QZyOH+kOcBSK6juhgofQiynmFiYMroFGl1s+VWx8nG+YHzwgi6MnPpqf5st5eZXKwkKpHTpVbVoY9Zl/0XtegInc15uBqLLpFr3vMW0vEwrsoQXeEDeP0QokX46BlZ/dRskQa67tMJg7+02cwE+fl+5d1td2W06gV+p5h9eH7QnbRdZ4AwL4sB5Sw7L5eFLcXmo3LeCmfO00xlCGZEdS1v9Rbh1Hc60v33wXd79DnEzDiwUfc4MmNPc2YvROLw8FlGmCpCM7kuOO7puiZFOEPsJtsC2LM8oP60Ekq+SFuXIQYuGqzgamWQmRhzNSp+O2oJ2tGHxDICtdC5NwuRGsWfBUH7ytCrHqOU2cxmfbi0pKVQ== barvv@vladybarvy"
+}
+
 
 variable "pvt_key" {
   description = "Path private key"
