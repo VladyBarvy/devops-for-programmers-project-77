@@ -47,4 +47,4 @@ ansible-vault encrypt_string 'ваш_токен_доступа_яндекс_об
 ## Ссылка на приложение
 ```
 https://puffysound.ru
-```
+``` 
